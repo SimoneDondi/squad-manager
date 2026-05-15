@@ -1033,7 +1033,7 @@ const ruoloShort = {Portiere:'P',Difensore:'D',Centrocampista:'C',Attaccante:'A'
 async function init() {
   showGlobalLoader(true);
   try {
-    await Promise.allSettled([
+    await Promise.all([
       loadPlayers(),
       loadMatches(),
       loadStaff(),
@@ -1041,10 +1041,10 @@ async function init() {
       loadInfortuni()
     ]);
     renderDashboard();
-  } catch(e) {
-    console.error('Init error:', e);
+  } catch(err) {
+    console.error('Errore init:', err);
   } finally {
-    showGlobalLoader(false);  // nasconde SEMPRE il loader
+    showGlobalLoader(false);
   }
 }
 
