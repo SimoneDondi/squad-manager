@@ -1032,7 +1032,6 @@ const ruoloShort = {Portiere:'P',Difensore:'D',Centrocampista:'C',Attaccante:'A'
 // ======== INIT ========
 async function init() {
   showGlobalLoader(true);
-  const safetyTimer = setTimeout(() => showGlobalLoader(false), 6000);
   try {
     await Promise.allSettled([
       loadPlayers(),
@@ -1043,10 +1042,9 @@ async function init() {
     ]);
     renderDashboard();
   } catch(e) {
-    console.error('Errore init:', e);
+    console.error('Init error:', e);
   } finally {
-    clearTimeout(safetyTimer);
-    showGlobalLoader(false);
+    showGlobalLoader(false);  // nasconde SEMPRE il loader
   }
 }
 
