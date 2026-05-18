@@ -1270,7 +1270,7 @@ async function deletePlayer(id) {
   const p = players.find(x=>x.id===id);
   if(!p) return;
   const { error } = await sb.from('giocatori').delete().eq('id', id);
-  if(error) { toast('Errore durante l'eliminazione ❌', 'error'); return; }
+  if(error) { toast("Errore durante l'eliminazione ❌", 'error'); return; }
   players = players.filter(x=>x.id!==id);
   renderPlayers();
   toast(`${p.nome} rimosso dalla rosa.`, 'error');
